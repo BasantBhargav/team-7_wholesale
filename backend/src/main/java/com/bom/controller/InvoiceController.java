@@ -31,10 +31,13 @@ public class InvoiceController {
 
     @GetMapping("/download/{invoiceNumber}")
     public ResponseEntity<Resource> download(@PathVariable String invoiceNumber) {
+        System.out.println("Downloading invoice: " + invoiceNumber);
+        System.out.println("Invoice API called successfully");
         Resource resource = invoiceService.download(invoiceNumber);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + invoiceNumber + ".pdf\"")
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(resource);
     }
+    
 }
