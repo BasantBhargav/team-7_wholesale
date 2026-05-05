@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { clearAuth } from '../redux/slices/authSlice';
+import { logout } from '../redux/slices/authSlice';
 
 export default function Navbar() {
   const { token, role } = useSelector(state => state.auth);
@@ -8,7 +8,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(clearAuth());
+    dispatch(logout());
     navigate('/login');
   };
 
