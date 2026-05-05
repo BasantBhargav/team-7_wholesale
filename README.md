@@ -321,3 +321,6 @@ This project is licensed under the MIT License.
 ---
 
 <p align="center">Built with ❤️ for the B2B commerce ecosystem</p>
+# Team 7 Wholesale Project
+
+Contribution by Ashutosh
