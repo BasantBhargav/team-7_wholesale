@@ -30,6 +30,9 @@ public class CsvController {
     ) {
         validateFile(file);
 
+        // ✅ NEW LOG ADDED
+        log.info("Received CSV file: {} of size: {} bytes", file.getOriginalFilename(), file.getSize());
+
         log.info("CSV upload initiated by user: {}", authentication.getName());
 
         Map<String, Object> parsedResult = csvUploadService.parseAndValidate(file);
@@ -41,6 +44,9 @@ public class CsvController {
         }
 
         log.info("CSV upload processed successfully. Items added: {}", cartItems.size());
+
+        // ✅ NEW LOG ADDED
+        log.info("CSV processing completed for user: {}", authentication.getName());
 
         return ApiResponse.builder()
                 .success(true)
@@ -55,7 +61,7 @@ public class CsvController {
         }
 
         String contentType = file.getContentType();
-        if (contentType == null || 
+        if (contentType == null ||
            (!contentType.equals("text/csv") && !contentType.equals("application/vnd.ms-excel"))) {
             throw new IllegalArgumentException("Only CSV files are allowed");
         }
